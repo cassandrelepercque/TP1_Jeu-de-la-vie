@@ -1,9 +1,16 @@
-def calcul_nb_voisins(Z):
-    forme = len(Z), len(Z[0])
-    N = [[0, ] * (forme[0]) for i in range(forme[1])]
-    for x in range(1, forme[0] - 1):
-        for y in range(1, forme[1] - 1):
-            N[x][y] = Z[x-1][y-1]+Z[x][y-1]+Z[x+1][y-1] \
-                    + Z[x-1][y]  + 0       +Z[x+1][y]  \
-                    + Z[x-1][y+1]+Z[x][y+1]+Z[x+1][y+1]
-    return N    
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+def afficher_iterations(function, matrix) :
+    """Affiche les étapes du jeu de 0 à 9 itérations."""
+    plt.figure(figsize=(10, 5))
+    plt.title("Itérations de 0 à 9 de Z")
+    tableau = list()
+    for i in range(10):
+        plt.subplot(2, 5, i) #affiche sur 2 lignes et 5 colonnes
+        matrice_iteration = function(matrix)
+        tableau.append(matrice_iteration) #met les iterations dans la liste
+        plt.imshow(tableau[i]) #affiche les figures
+        plt.title("Itération" + str(i-1))
+
