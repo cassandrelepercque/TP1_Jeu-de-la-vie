@@ -5,7 +5,6 @@ import matplotlib.animation as animation
 def afficher_iterations(function, matrix):
     """Affiche les étapes du je de la vie sur 10 itérations."""
     plt.figure(figsize=(11,5)) #affichage des figures des itérations plus lisible.
-    plt.suptitle("Itérations de 0 à 9 de Z") #titre général
     plt.subplot(2, 5, 1)
     matrice_iteration = (np.array(matrix))
     plt.imshow(matrice_iteration)
@@ -25,11 +24,3 @@ def video(matrix, jeu_np, iterations):
         return(case)
     anim = animation.FuncAnimation(plt.figure(), animate, frames = iterations)
     return(anim)
-
-def matrix_alea(graine, matrix):
-    prop_active = (1 + graine) * 10 / 100
-    for i in range(1, np.shape(matrix)[0]-1):
-        for j in range(1, np.shape(matrix)[1]-1):
-            aleatoire = np.random.binomial(n=1, p=float(prop_active))
-            matrix[i, j] = aleatoire
-    return(matrix)
